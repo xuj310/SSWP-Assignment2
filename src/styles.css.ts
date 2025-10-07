@@ -1,6 +1,5 @@
 import { style, globalStyle, createTheme } from '@vanilla-extract/css';
 
-// 🎨 Theme variables
 export const [themeClass, vars] = createTheme({
   colour: {
     hovor: '#e0e0e0',
@@ -10,7 +9,6 @@ export const [themeClass, vars] = createTheme({
   },
 });
 
-// 🌍 Global styles
 globalStyle(':root', {
   fontFamily: 'system-ui, Avenir, Helvetica, Arial, sans-serif',
   lineHeight: 1.5,
@@ -37,7 +35,6 @@ globalStyle('.search::placeholder', {
   fontSize: '20px',
 });
 
-// 📦 Component styles
 export const app = style({
   textAlign: 'center',
   display: 'flex',
