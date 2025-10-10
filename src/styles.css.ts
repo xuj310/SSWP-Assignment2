@@ -195,3 +195,53 @@ export const headerItem = style({
   letterSpacing: '0.2rem',
   margin: '5px',
 });
+
+export const gridContainer = style({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, minmax(200px, 1fr))',
+  gap: '16px',
+  padding: '16px',
+});
+
+export const gridItem = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  borderRadius: '8px',
+  padding: '12px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+});
+
+export const image = style({
+  width: '100%',
+  aspectRatio: '1 / 1',
+  objectFit: 'cover',
+  borderRadius: '4px',
+  marginBottom: '8px',
+});
+export const smallImage = style({
+  width: '30%',
+  aspectRatio: '1 / 1',
+  objectFit: 'cover',
+  borderRadius: '4px',
+  marginBottom: '8px',
+});
+
+export const caption = style({
+  fontSize: '14px',
+  color: '#ffffffff',
+  textAlign: 'center'
+});
+
+export const verticalGridContainer = style({
+  display: 'flex',
+  flexDirection: 'column', 
+  gap: '16px',            
+});
+
+export const verticalGridItem = style({
+  display: 'flex',
+  flexDirection: 'row',       
+  alignItems: 'center',       
+  gap: '12px',                
+});

@@ -2,7 +2,6 @@ import Button from 'react-bootstrap/Button';
 import * as styles from '../../styles.css.ts';
 
 /* 
-   Button for the going home button
    goHome - function for going back to the home page
 */
 export default function GoHomeButton({goHome}) {

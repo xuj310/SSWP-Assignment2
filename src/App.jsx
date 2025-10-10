@@ -5,8 +5,12 @@ import Container from "react-bootstrap/Container";
 import { useState } from 'react';
 import LoginButton from './components/layout/LoginButton.jsx';
 import Registerbutton from './components/layout/RegisterButton.jsx';
+import CartButton from './components/layout/CartButton.jsx';
+import ProductsButton from './components/layout/ProductsButton.jsx';
+import ProfileButton from './components/layout/ProfileButton.jsx';
 import FrontPage from './FrontPage.jsx';
 import LoginPage from './LoginPage.jsx';
+import MyCart from './MyCart.jsx';
 import RegisterPage from './RegisterPage.jsx';
 import GoHomeButton from './components/layout/GoHomeButton.jsx';
 import LogoIcon from './components/layout/LogoIcon.jsx';
@@ -19,6 +23,10 @@ function App() {
 
   function goLogin() {
     navigate('/LoginPage');
+  }
+
+  function goCart() {
+    navigate('/Cart');
   }
 
   function goRegister() {
@@ -37,9 +45,12 @@ function App() {
           <Nav className={styles.navbarNav}>
             <LogoIcon />
             <div className={styles.rightAligned}>
+              <GoHomeButton goHome={goHome} />
+              <ProductsButton />
               <LoginButton className={styles.headerItem} goLogin={goLogin} />
               <Registerbutton className={styles.headerItem} goRegister={goRegister} />
-              <GoHomeButton goHome={goHome} />
+              <CartButton goCart={goCart} />
+              <ProfileButton />
             </div>
           </Nav>
         </Container>
@@ -48,6 +59,7 @@ function App() {
       <Routes>
         <Route path="/LoginPage" element={<LoginPage />} />
         <Route path="/RegisterPage" element={<RegisterPage />} />
+        <Route path="/Cart" element={<MyCart />} />
         <Route path="/" element={<FrontPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
