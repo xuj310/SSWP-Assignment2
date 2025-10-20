@@ -1,12 +1,31 @@
-import Button from 'react-bootstrap/Button';
-import * as styles from '../../styles.css.ts';
+import { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
+import * as styles from "../../styles.css.ts";
 
 /* 
    Button for going to the Register page
+   goRegister - Go to the register page
 */
-export default function RegisterButton({goRegister}) {
+export default function RegisterButton({ goRegister }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    return (
-        <Button className={styles.headerItem} variant="outline-light" onClick={goRegister}>Register</Button>
-    );
+  // Only display if the user is not logged in
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    setIsLoggedIn(token !== null && token !== undefined);
+  }, []);
+
+  if (isLoggedIn) {
+    return null;
   }
+
+  return (
+    <Button
+      className={styles.headerItem}
+      variant="outline-light"
+      onClick={goRegister}
+    >
+      Register
+    </Button>
+  );
+}
