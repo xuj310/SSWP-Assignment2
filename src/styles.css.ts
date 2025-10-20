@@ -65,6 +65,7 @@ export const welcomeBox = style({
 
 globalStyle(`${welcomeBox} h3`, {
   fontSize: '3rem',
+  textAlign: 'center'
 });
 
 globalStyle(`${welcomeBox} li`, {
