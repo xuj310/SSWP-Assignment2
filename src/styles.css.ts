@@ -16,7 +16,7 @@ globalStyle(':root', {
 });
 
 globalStyle('body', {
-  background: 'var(--primary)',
+  background: vars.colour.background,
   boxSizing: 'border-box',
 });
 
@@ -36,14 +36,15 @@ globalStyle('.search::placeholder', {
 });
 
 export const app = style({
-  textAlign: 'center',
   display: 'flex',
   flexDirection: 'column',
   minHeight: '100vh',
+  textAlign: 'center',
 });
 
-export const infoMessage = style({
-  textAlign: 'center',
+export const mainContent = style({
+  margin: '1rem auto',
+  flex: 1,
 });
 
 export const middleAlignment = style({
@@ -52,136 +53,11 @@ export const middleAlignment = style({
   margin: '20px',
 });
 
-export const welcomeBox = style({
-  maxWidth: '900px',
-  border: '1px solid #ccc',
-  borderRadius: '10px',
-  overflow: 'hidden',
-  padding: '20px',
-  listStyleType: 'none',
-  fontSize: '1.5rem',
-  margin: '5px',
-});
-
-globalStyle(`${welcomeBox} h3`, {
-  fontSize: '3rem',
-  textAlign: 'center'
-});
-
-globalStyle(`${welcomeBox} li`, {
-  display: 'flex',
-  gap: '10px',
-  justifyContent: 'center',
-  alignItems: 'center',
-  padding: '15px',
-});
-
-export const infoCard = style({
-  display: 'flex',
-  maxWidth: '900px',
-  border: '1px solid #ccc',
-  borderRadius: '10px',
-  overflow: 'hidden',
-  padding: '10px',
-  listStyleType: 'none',
-});
-
-globalStyle(`${infoCard} li:hover`, {
-  backgroundColor: 'none',
-});
-
-globalStyle(`${infoCard} img`, {
-  height: '300px',
-  objectFit: 'cover',
-  display: 'block',
-  margin: '0 auto',
-});
-
-globalStyle(`${infoCard} h3`, {
-  fontSize: '3rem',
-});
-
-globalStyle(`${infoCard} p, ${infoCard} a`, {
-  fontSize: '1.1em',
-  lineHeight: 1,
-  color: 'inherit',
-  textDecoration: 'none',
-  letterSpacing: '0.20px',
-});
-
-// 📋 List styles
-export const list = style({
-  padding: '1rem',
-});
-
-globalStyle(`${list} li:hover`, {
-  backgroundColor: vars.colour.hovor,
-});
-
-globalStyle(`${list} li`, {
-  display: 'grid',
-  gridTemplateColumns: '5rem 1fr',
-  gridTemplateRows: 'auto auto',
-  alignItems: 'center',
-  padding: '1rem 2rem',
-  columnGap: '2rem',
-  fontSize: '1.4rem',
-  borderBottom: `1px solid ${vars.colour.hovor}`,
-});
-
-export const infoRow = style({
-  display: 'grid',
-  alignSelf: 'center',
-  cursor: 'pointer',
-});
-
-globalStyle(`${list} img`, {
-  width: '100%',
-  gridRow: '1 / -1',
-});
-
-export const favButton = style({
-  gridColumn: '3',
-  alignSelf: 'center',
-  justifySelf: 'start',
-  padding: '0.5rem',
-});
-
-globalStyle(`${list} h3`, {
-  fontSize: '2rem',
-});
-
-// 🔘 Button styles
-export const button = style({
-  borderRadius: '8px',
-  border: '1px solid transparent',
-  padding: '0.6em 1.2em',
-  fontSize: '1em',
-  fontWeight: 500,
-  fontFamily: 'inherit',
-  backgroundColor: vars.colour.background,
-  cursor: 'pointer',
-  transition: 'border-color 0.25s',
-});
-
-globalStyle(`${button}:hover`, {
-  borderColor: vars.colour.purple,
-});
-
-globalStyle(`${button}:focus, ${button}:focus-visible`, {
-  outline: '4px auto -webkit-focus-ring-color',
-});
-
-export const mainContent = style({
-  margin: '1rem auto',
-  flex: 1,
-});
-
 export const navbarNav = style({
-  justifyContent: 'space-between',
-  width: '100%',
   display: 'flex',
+  justifyContent: 'space-between',
   alignItems: 'center',
+  width: '100%',
 });
 
 export const rightAligned = style({
@@ -196,6 +72,52 @@ export const headerItem = style({
   margin: '5px',
 });
 
+export const card = style({
+  border: '1px solid #ccc',
+  borderRadius: '10px',
+  overflow: 'hidden',
+  padding: '20px',
+});
+
+export const welcomeBox = style([
+  card,
+  {
+    maxWidth: '900px',
+    fontSize: '1.5rem',
+    margin: '5px',
+    listStyleType: 'none',
+  },
+]);
+
+globalStyle(`${welcomeBox} h3`, {
+  fontSize: '3rem',
+  textAlign: 'center',
+});
+
+export const infoCard = style([
+  card,
+  {
+    maxWidth: '900px',
+    padding: '10px',
+    listStyleType: 'none',
+    display: 'flex',
+  },
+]);
+
+export const infoMessage = style({
+  textAlign: 'center',
+});
+
+export const productGrid = style({
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '16px',
+  padding: '0',
+  margin: '0',
+  listStyle: 'none',
+  overflowX: 'auto',
+});
+
 export const gridContainer = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(4, minmax(200px, 1fr))',
@@ -207,8 +129,8 @@ export const gridItem = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  borderRadius: '8px',
   padding: '12px',
+  borderRadius: '8px',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
 });
 
@@ -219,6 +141,7 @@ export const image = style({
   borderRadius: '4px',
   marginBottom: '8px',
 });
+
 export const smallImage = style({
   width: '30%',
   aspectRatio: '1 / 1',
@@ -227,25 +150,63 @@ export const smallImage = style({
   marginBottom: '8px',
 });
 
+export const productImage = style({
+  width: '50%',
+  aspectRatio: '1 / 1',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  borderRadius: '0.5rem',
+});
+
 export const caption = style({
   fontSize: '14px',
   color: '#ffffffff',
-  textAlign: 'center'
+  textAlign: 'center',
 });
 
-export const verticalGridContainer = style({
-  display: 'flex',
-  flexDirection: 'column', 
-  gap: '16px',            
+export const productList = style({
+  padding: '1rem',
 });
 
-export const verticalGridItem = style({
-  display: 'flex',
-  flexDirection: 'row',       
-  alignItems: 'center',       
-  gap: '12px',                
+// With this (more specific):
+globalStyle(`.${productList} > li`, {
+  display: 'grid',
+  gridTemplateColumns: '5rem 1fr',
+  gridTemplateRows: 'auto auto',
+  alignItems: 'center',
+  padding: '1rem 2rem',
+  columnGap: '2rem',
+  fontSize: '1.4rem',
+  borderBottom: `1px solid ${vars.colour.hovor}`,
 });
-export const eventItem = style({
+
+globalStyle(`${productList} li:hover`, {
+  backgroundColor: vars.colour.hovor,
+});
+
+globalStyle(`${productList} img`, {
+  width: '100%',
+  gridRow: '1 / -1',
+});
+
+globalStyle(`${productList} h3`, {
+  fontSize: '2rem',
+});
+
+export const infoRow = style({
+  display: 'grid',
+  alignSelf: 'center',
+  cursor: 'pointer',
+});
+
+export const favButton = style({
+  gridColumn: '3',
+  alignSelf: 'center',
+  justifySelf: 'start',
+  padding: '0.5rem',
+});
+
+export const productItem = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
@@ -259,17 +220,41 @@ export const eventItem = style({
   },
 });
 
+export const baseButton = style({
+  borderRadius: '8px',
+  border: '1px solid transparent',
+  padding: '0.6em 1.2em',
+  fontSize: '1em',
+  fontWeight: 500,
+  fontFamily: 'inherit',
+  backgroundColor: vars.colour.background,
+  cursor: 'pointer',
+  transition: 'border-color 0.25s',
+});
 
-export const eventImage = style({
-  width: '100%',
-  aspectRatio: '5 / 4',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  borderRadius: '0.5rem',
+globalStyle(`${baseButton}:hover`, {
+  borderColor: vars.colour.purple,
+});
+
+globalStyle(`${baseButton}:focus, ${baseButton}:focus-visible`, {
+  outline: '4px auto -webkit-focus-ring-color',
 });
 
 export const buttonRow = style({
   display: 'flex',
   gap: '12px',
   marginTop: '8px',
+});
+
+export const verticalGridContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '16px',
+});
+
+export const verticalGridItem = style({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: '12px',
 });

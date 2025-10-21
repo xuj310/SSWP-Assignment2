@@ -1,4 +1,3 @@
-
 import { useState, useEffect, Fragment } from "react";
 import Container from "react-bootstrap/Container";
 import { Row, Col, Image } from "react-bootstrap";
@@ -68,13 +67,12 @@ const AllProducts = () => {
                 ))}
               </div>
             )}
-            <div className="listContainer">
-              <ul>
+              <ul className={styles.productGrid}>
                 {items.map((item) => (
                   <ProductItem key={item._id} item={item} />
                 ))}
               </ul>
-            </div>
+
           </div>
         </div>
       </Container>

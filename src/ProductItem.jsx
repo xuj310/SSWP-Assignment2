@@ -18,20 +18,18 @@ const ProductItem = ({ item }) => {
   };
 
   return (
-    <div>
-      <li className={styles.eventItem} onClick={goToProductPage} >
-        <img src={item.imgUrl} className={styles.eventImage} />
-        <div className={styles.infoRow} >
-          <h2>{item.title}</h2>
-          {currentUserRole === "admin" && (
-            <div className={styles.buttonRow}>
-              <EditProductButton eventId={item.id} className="eventButton" />
-              <DeleteProductButton eventId={item.id} className="eventButton" />
-            </div>
-          )}
-        </div>
-      </li>
-    </div>
+    <li className={styles.gridItem} onClick={goToProductPage}>
+      <img src={item.imgUrl} className={styles.productImage} />
+      <div className={styles.infoRow}>
+        <h2>{item.title}</h2>
+        {currentUserRole === "admin" && (
+          <div className={styles.buttonRow}>
+            <EditProductButton eventId={item.id} className="eventButton" />
+            <DeleteProductButton eventId={item.id} className="eventButton" />
+          </div>
+        )}
+      </div>
+    </li>
   );
 };
 

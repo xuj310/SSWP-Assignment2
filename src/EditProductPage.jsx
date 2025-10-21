@@ -13,7 +13,7 @@ const EditProductPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [onSale, setOnSale] = useState(null);
+  const [onSale, setOnSale] = useState("");
   const [errors, setErrors] = useState([]);
   const formRef = useRef(null);
 
@@ -79,7 +79,7 @@ const EditProductPage = () => {
 
     // Edit an event
     try {
-      const res = await fetch(`http://localhost:5000/api/events?id=${id}`, {
+      const res = await fetch(`http://localhost:5000/api/products?id=${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -151,13 +151,15 @@ const EditProductPage = () => {
                 onChange={(e) => setPrice(e.target.value)}
               />
               <label className="form-label">On Sale</label>
-              <input
-                type="text"
+              <select
                 className="form-control"
                 id="onSale"
                 value={onSale}
                 onChange={(e) => setOnSale(e.target.value)}
-              />
+              >
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
 
               <button type="submit" className="btn btn-primary mt-3">
                 Edit Product
