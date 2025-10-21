@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import * as styles from "./styles.css.ts";
 
 export default function DeleteProductButton({ eventId }) {
   // Handle deleting the event
@@ -28,5 +29,5 @@ export default function DeleteProductButton({ eventId }) {
     }
   };
 
-  return <button onClick={handleClick}>Delete</button>;
+  return <button className="btn mt-3 bg-black text-white" onClick={handleClick}>Delete</button>;
 }

@@ -55,7 +55,7 @@ const AllProducts = () => {
   return (
     <Fragment>
       <Container>
-          <div className={styles.mainBox}>
+          <div className={styles.productBox}>
             <h3>All Products</h3>
             {errors.length > 0 && (
               <div className="error-box">

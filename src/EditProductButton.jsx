@@ -7,5 +7,5 @@ export default function EditProductButton({ eventId: productId }) {
     navigate(`/products/edit/${productId}`);
   };
 
-  return <button onClick={goToEditProductPage}>Edit</button>;
+  return <button className="btn mt-3 bg-black text-white" onClick={goToEditProductPage}>Edit</button>;
 }
