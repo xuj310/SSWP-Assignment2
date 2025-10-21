@@ -14,7 +14,7 @@ const MyCart = () => {
     <Fragment>
       <Container>
         <div className={styles.middleAlignment}>
-          <div className={styles.welcomeBox}>
+          <div className={styles.mainBox}>
             <h3>My Cart</h3>
             <div className={styles.verticalGridContainer}>
               {items.map((item, index) => (

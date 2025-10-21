@@ -57,7 +57,7 @@ const RegisterPage = () => {
     <Fragment>
       <Container>
         <div className={styles.middleAlignment}>
-          <div className={styles.welcomeBox} ref={formRef}>
+          <div className={styles.mainBox} ref={formRef}>
             <h3 className="text-center mb-4">Register</h3>
             <form onSubmit={handleSubmit}>
               <label htmlFor="name" className="form-label">

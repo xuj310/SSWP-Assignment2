@@ -47,7 +47,7 @@ const LoginPage = () => {
     <Fragment>
       <Container>
         <div className={styles.middleAlignment}>
-          <div className={styles.welcomeBox}>
+          <div className={styles.mainBox}>
             <h3 class="text-center mb-4">Login</h3>
             <form onSubmit={handleSubmit}>
               <label for="email" class="form-label">

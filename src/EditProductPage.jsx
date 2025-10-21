@@ -108,7 +108,7 @@ const EditProductPage = () => {
     <Fragment>
       <Container>
         <div className={styles.middleAlignment}>
-          <div className={styles.welcomeBox} ref={formRef}>
+          <div className={styles.mainBox} ref={formRef}>
             <h3>Edit Event</h3>
             <h4>You can modify the details here</h4>
             <form onSubmit={handleSubmit}>

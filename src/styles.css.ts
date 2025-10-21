@@ -79,17 +79,17 @@ export const card = style({
   padding: '20px',
 });
 
-export const welcomeBox = style([
+export const mainBox = style([
   card,
   {
-    maxWidth: '900px',
-    fontSize: '1.5rem',
-    margin: '5px',
+    width: '100%',         
+    maxWidth: 'none',      
+    margin: '0 auto',
     listStyleType: 'none',
   },
 ]);
 
-globalStyle(`${welcomeBox} h3`, {
+globalStyle(`${mainBox} h3`, {
   fontSize: '3rem',
   textAlign: 'center',
 });
@@ -111,9 +111,10 @@ export const infoMessage = style({
 export const productGrid = style({
   display: 'flex',
   flexDirection: 'row',
+  justifyContent: 'center',
   gap: '16px',
   padding: '0',
-  margin: '0',
+  margin: '0 auto',
   listStyle: 'none',
   overflowX: 'auto',
 });
@@ -168,7 +169,6 @@ export const productList = style({
   padding: '1rem',
 });
 
-// With this (more specific):
 globalStyle(`.${productList} > li`, {
   display: 'grid',
   gridTemplateColumns: '5rem 1fr',

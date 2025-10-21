@@ -55,8 +55,7 @@ const AllProducts = () => {
   return (
     <Fragment>
       <Container>
-        <div className={styles.infoCard}>
-          <div className={styles.welcomeBox}>
+          <div className={styles.mainBox}>
             <h3>All Products</h3>
             {errors.length > 0 && (
               <div className="error-box">
@@ -74,7 +73,6 @@ const AllProducts = () => {
               </ul>
 
           </div>
-        </div>
       </Container>
     </Fragment>
   );

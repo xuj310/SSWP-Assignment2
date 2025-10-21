@@ -16,7 +16,7 @@ const FrontPage = () => {
     <Fragment>
       <Container>
         <div className={styles.middleAlignment}>
-          <div className={styles.welcomeBox}>
+          <div className={styles.mainBox}>
             <h3>Welcome to Anime Central</h3>
             <div className={styles.gridContainer}>
               {items.map((item, index) => (
