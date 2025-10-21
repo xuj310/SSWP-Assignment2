@@ -177,7 +177,6 @@ export const mainContent = style({
   flex: 1,
 });
 
-// 🧭 Navbar styles
 export const navbarNav = style({
   justifyContent: 'space-between',
   width: '100%',
@@ -245,4 +244,32 @@ export const verticalGridItem = style({
   flexDirection: 'row',       
   alignItems: 'center',       
   gap: '12px',                
+});
+export const eventItem = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '16px',
+  width: '80%',
+  margin: '16px auto',
+  alignItems: 'center',
+  selectors: {
+    '&:hover': {
+      backgroundColor: vars.colour.hovor,
+    },
+  },
+});
+
+
+export const eventImage = style({
+  width: '100%',
+  aspectRatio: '5 / 4',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  borderRadius: '0.5rem',
+});
+
+export const buttonRow = style({
+  display: 'flex',
+  gap: '12px',
+  marginTop: '8px',
 });

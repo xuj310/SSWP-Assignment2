@@ -10,6 +10,8 @@ import ProductsButton from "./components/layout/ProductsButton.jsx";
 import ProfileButton from "./components/layout/ProfileButton.jsx";
 import FrontPage from "./FrontPage.jsx";
 import LoginPage from "./LoginPage.jsx";
+import AllProductsPage from "./AllProducts.jsx";
+import EditProductPage from "./EditProductPage.jsx";
 import MyCart from "./MyCart.jsx";
 import RegisterPage from "./RegisterPage.jsx";
 import GoHomeButton from "./components/layout/GoHomeButton.jsx";
@@ -23,6 +25,10 @@ function App() {
 
   function goLogin() {
     navigate("/LoginPage");
+  }
+
+  function goAllProducts() {
+    navigate("/products");
   }
 
   function goCart() {
@@ -46,7 +52,7 @@ function App() {
             <LogoIcon />
             <div className={styles.rightAligned}>
               <GoHomeButton goHome={goHome} />
-              <ProductsButton />
+              <ProductsButton goAllProducts={goAllProducts} />
               <LoginButton className={styles.headerItem} goLogin={goLogin} />
               <Registerbutton
                 className={styles.headerItem}
@@ -72,7 +78,9 @@ function App() {
       />
       <Routes>
         <Route path="/LoginPage" element={<LoginPage />} />
+        <Route path="/Products" element={<AllProductsPage />} />
         <Route path="/RegisterPage" element={<RegisterPage />} />
+        <Route path="/products/edit/:id" element={<EditProductPage />} />
         <Route path="/Cart" element={<MyCart />} />
         <Route path="/" element={<FrontPage />} />
         <Route path="*" element={<NotFound />} />
