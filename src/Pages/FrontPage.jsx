@@ -1,8 +1,7 @@
 // The home/landing page
-
 import { Fragment } from "react";
 import Container from "react-bootstrap/Container";
-import * as styles from "./styles.css.ts";
+import * as styles from "../styles.css.ts";
 
 const items = [
   { src: 'https://sxcu.net/7kIF8QkjR.png', label: 'Blu-Rays' },

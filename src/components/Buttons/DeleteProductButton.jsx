@@ -5,7 +5,7 @@ export default function DeleteProductButton({ productId }) {
   const handleClick = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/events?id=${productId}`,
+        `http://localhost:5000/api/products?id=${productId}`,
         {
           method: "DELETE",
           headers: {
