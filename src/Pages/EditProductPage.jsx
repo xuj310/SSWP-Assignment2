@@ -78,7 +78,7 @@ const EditProductPage = () => {
       return;
     }
 
-    // Edit an event
+    // Edit a product
     try {
       const res = await fetch(`http://localhost:5000/api/products?id=${id}`, {
         method: "PUT",
@@ -92,7 +92,7 @@ const EditProductPage = () => {
       const data = await res.text();
       const parsed = JSON.parse(data);
 
-      // If there's errors, pick them up. Otherwise display a toast and return to the events page.
+      // If there's errors, pick them up. Otherwise display a toast and return to the products page.
       if (parsed.errors != null) {
         setErrors(parsed.errors);
       } else {

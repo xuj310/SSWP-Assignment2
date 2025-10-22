@@ -9,7 +9,7 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("user"); // default role
+  const [role, setRole] = useState("user"); // Default Role
 
   const [errors, setErrors] = useState([]);
   const [showFloater, setShowFloater] = useState(false);
@@ -29,6 +29,7 @@ const RegisterPage = () => {
     e.preventDefault();
     setErrors([]);
 
+    // Submit the registration request
     try {
       const res = await fetch("http://localhost:5000/api/users", {
         method: "POST",
