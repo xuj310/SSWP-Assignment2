@@ -1,7 +1,7 @@
 import { useState, Fragment } from "react";
 import Container from "react-bootstrap/Container";
 import { toast } from "react-toastify";
-import * as styles from "./styles.css.ts";
+import * as styles from "../styles.css.ts";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +18,7 @@ const LoginPage = () => {
       return;
     }
 
+    // Attempt login
     try {
       const res = await fetch("http://localhost:5000/api/users/login", {
         method: "POST",

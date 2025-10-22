@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import { toast } from "react-toastify";
 import Floater from "react-floater";
 import { useEffect } from "react";
-import * as styles from "./styles.css.ts";
+import * as styles from "../styles.css.ts";
 
 const EditProductPage = () => {
   // Get product Id from URL
@@ -75,6 +75,7 @@ const EditProductPage = () => {
     const token = sessionStorage.getItem("token");
     if (!token) {
       toast("Not logged in");
+      return;
     }
 
     // Edit an event

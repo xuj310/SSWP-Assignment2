@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
 import { useEffect, useState, Fragment, useRef } from "react";
-import * as styles from "./styles.css.ts";
+import * as styles from "../styles.css.ts";
 import Floater from "react-floater";
 import { toast } from "react-toastify";
 

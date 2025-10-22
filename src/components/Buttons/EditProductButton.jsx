@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function EditProductButton({ eventId: productId }) {
+export default function EditProductButton({ productId }) {
   const navigate = useNavigate();
 
   const goToEditProductPage = () => {

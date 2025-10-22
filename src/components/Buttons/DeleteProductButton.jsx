@@ -1,12 +1,11 @@
 import { toast } from "react-toastify";
-import * as styles from "./styles.css.ts";
 
-export default function DeleteProductButton({ eventId }) {
-  // Handle deleting the event
+export default function DeleteProductButton({ productId }) {
+  // Handle deleting the product
   const handleClick = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/events?id=${eventId}`,
+        `http://localhost:5000/api/events?id=${productId}`,
         {
           method: "DELETE",
           headers: {
@@ -18,11 +17,11 @@ export default function DeleteProductButton({ eventId }) {
 
       const result = await res.json();
 
-      // If there's an issue then display a toast with the problem. Otherwise go to events to refresh the events.
+      // If there's an issue then display a toast with the problem. Otherwise go to products to refresh the page.
       if (res.status === 400 || res.status === 403) {
         toast(result.message);
       } else {
-        window.location.href = "/events";
+        window.location.href = "/products";
       }
     } catch (err) {
       console.error("Error:", err);

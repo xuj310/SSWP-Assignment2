@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import * as styles from "../../styles.css.ts";
 
-/* 
-   Button for going to the Register page
-   goRegister - Go to the register page
-*/
 export default function RegisterButton({ goRegister }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 

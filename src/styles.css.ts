@@ -205,6 +205,8 @@ export const infoRow = style({
   display: "grid",
   alignSelf: "center",
   cursor: "pointer",
+  justifySelf: "center",
+  textAlign: "center",
 });
 
 export const productItem = style({
@@ -244,6 +246,7 @@ globalStyle(`${baseButton}:focus, ${baseButton}:focus-visible`, {
 export const buttonRow = style({
   display: "flex",
   gap: "12px",
+  justifyContent: "center",
   marginTop: "8px",
 });
 

@@ -1,26 +1,24 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
-import NotFound from "./NotFound";
+import NotFound from "./NotFound.jsx";
 import { Navbar, Nav } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import { useState } from "react";
-import LoginButton from "./components/layout/LoginButton.jsx";
-import Registerbutton from "./components/layout/RegisterButton.jsx";
-import CartButton from "./components/layout/CartButton.jsx";
-import ProductsButton from "./components/layout/ProductsButton.jsx";
-import ProfileButton from "./components/layout/ProfileButton.jsx";
+import LoginButton from "./components/Buttons/LoginButton.jsx";
+import Registerbutton from "./components/Buttons/RegisterButton.jsx";
+import CartButton from "./components/Buttons/CartButton.jsx";
+import ProductsButton from "./components/Buttons/ProductsButton.jsx";
+import ProfileButton from "./components/Buttons/ProfileButton.jsx";
 import FrontPage from "./FrontPage.jsx";
 import LoginPage from "./LoginPage.jsx";
-import AllProductsPage from "./AllProducts.jsx";
+import AllProductsPage from "./AllProductsPage.jsx";
 import EditProductPage from "./EditProductPage.jsx";
 import MyCart from "./MyCart.jsx";
 import RegisterPage from "./RegisterPage.jsx";
-import GoHomeButton from "./components/layout/GoHomeButton.jsx";
-import LogoIcon from "./components/layout/LogoIcon.jsx";
-import * as styles from "./styles.css.ts";
+import GoHomeButton from "./components/Buttons/GoHomeButton.jsx";
+import LogoIcon from "./components/images/LogoIcon.jsx";
+import * as styles from "../styles.css.ts";
 import { ToastContainer } from "react-toastify";
 
 function App() {
-  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   function goLogin() {
@@ -29,10 +27,6 @@ function App() {
 
   function goAllProducts() {
     navigate("/products");
-  }
-
-  function goCart() {
-    navigate("/Cart");
   }
 
   function goRegister() {
@@ -44,6 +38,7 @@ function App() {
     navigate("/");
   }
 
+  // Layout of the site. Including the Toast container to display the toast.
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -58,7 +53,6 @@ function App() {
                 className={styles.headerItem}
                 goRegister={goRegister}
               />
-              <CartButton goCart={goCart} />
               <ProfileButton />
             </div>
           </Nav>

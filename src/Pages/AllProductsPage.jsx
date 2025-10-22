@@ -1,31 +1,13 @@
 import { useState, useEffect, Fragment } from "react";
 import Container from "react-bootstrap/Container";
-import { Row, Col, Image } from "react-bootstrap";
-import * as styles from "./styles.css.ts";
-import ProductItem from "./ProductItem";
+import * as styles from "../styles.css.ts";
+import ProductItem from "../components/ProductItem.jsx";
 
-const items = [
-  {
-    id: 1,
-    title: "One Piece Luffy Figure",
-    img: "https://sxcu.net/7kIM_xxqJ.png",
-  },
-  {
-    id: 2,
-    title: "Psycho-Pass The Movie",
-    img: "https://sxcu.net/7kIMcu0qZ.png",
-  },
-  {
-    id: 3,
-    title: "One Punch Man Blu-Ray",
-    img: "https://sxcu.net/7kILZDLBM.png",
-  },
-];
-
-const AllProducts = () => {
+const AllProductsPage = () => {
   const [items, setItems] = useState([]);
   const [errors, setErrors] = useState([]);
 
+  // Go fetch all the products
   const getProducts = async () => {
     try {
       const res = await fetch("http://localhost:5000/api/products", {
@@ -40,7 +22,7 @@ const AllProducts = () => {
       if (data.errors) {
         setErrors(data.errors);
       } else {
-        setItems(data); // assuming data is an array of event objects
+        setItems(data);
       }
     } catch (err) {
       console.error("Error fetching products: ", err);
@@ -78,4 +60,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default AllProductsPage;

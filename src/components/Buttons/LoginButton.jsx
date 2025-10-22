@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import * as styles from "../../styles.css.ts";
-/* 
-   Button for going to the Login page
-   goLogin - Go to the login page
-*/
+
+// This handles the login/logout feature
 export default function LoginButton({ goLogin }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
