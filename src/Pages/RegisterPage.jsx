@@ -5,10 +5,10 @@ import Floater from "react-floater";
 import { toast } from "react-toastify";
 
 const RegisterPage = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNum, setPhoneNum] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phoneNum, setPhoneNum] = useState(null);
+  const [password, setPassword] = useState(null);
   const [role, setRole] = useState("user"); // Default Role
 
   const [errors, setErrors] = useState([]);

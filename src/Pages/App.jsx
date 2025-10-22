@@ -5,10 +5,13 @@ import Container from "react-bootstrap/Container";
 import LoginButton from "../components/Buttons/LoginButton.jsx";
 import Registerbutton from "../components/Buttons/RegisterButton.jsx";
 import ProductsButton from "../components/Buttons/ProductsButton.jsx";
-import ProfileButton from "../components/Buttons/ProfileButton.jsx";
+import MyProfileButton from "../components/Buttons/ProfileButton.jsx";
+import AddProductButton from "../components/Buttons/AddProductButton.jsx";
 import FrontPage from "./FrontPage.jsx";
 import LoginPage from "./LoginPage.jsx";
+import AddProductPage from "./AddProductPage.jsx";
 import AllProductsPage from "./AllProductsPage.jsx";
+import EditProfilePage from "./EditProfilePage.jsx";
 import EditProductPage from "./EditProductPage.jsx";
 import RegisterPage from "./RegisterPage.jsx";
 import GoHomeButton from "../components/Buttons/GoHomeButton.jsx";
@@ -18,6 +21,14 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   const navigate = useNavigate();
+
+  function goAddProduct() {
+    navigate("/addProduct");
+  }
+
+  function goMyProfile() {
+    navigate("/profile");
+  }
 
   function goLogin() {
     navigate("/LoginPage");
@@ -45,13 +56,17 @@ function App() {
             <LogoIcon />
             <div className={styles.rightAligned}>
               <GoHomeButton goHome={goHome} />
+              <AddProductButton goAddProduct={goAddProduct} />
               <ProductsButton goAllProducts={goAllProducts} />
               <LoginButton className={styles.headerItem} goLogin={goLogin} />
               <Registerbutton
                 className={styles.headerItem}
                 goRegister={goRegister}
               />
-              <ProfileButton />
+              <MyProfileButton
+                className="headerItem"
+                goMyProfile={goMyProfile}
+              />
             </div>
           </Nav>
         </Container>
@@ -70,11 +85,13 @@ function App() {
       />
       <Routes>
         <Route path="/LoginPage" element={<LoginPage />} />
+        <Route path="/addProduct" element={<AddProductPage />} />
         <Route path="/Products" element={<AllProductsPage />} />
         <Route path="/RegisterPage" element={<RegisterPage />} />
         <Route path="/products/edit/:id" element={<EditProductPage />} />
         <Route path="/" element={<FrontPage />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/profile" element={<EditProfilePage />} />
       </Routes>
     </>
   );

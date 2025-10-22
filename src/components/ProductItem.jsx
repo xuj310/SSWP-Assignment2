@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import BuyProductButton from "./Buttons/BuyProductButton.jsx";
 import EditProductButton from "./Buttons/EditProductButton.jsx";
 import DeleteProductButton from "./Buttons/DeleteProductButton.jsx";
@@ -7,11 +7,18 @@ import * as styles from "../styles.css.ts";
 
 // For displaying each product
 const ProductItem = ({ item }) => {
-  const navigate = useNavigate();
 
-  // Check the role of the user (admin or user)
-  const token = sessionStorage.getItem("token");
-  const currentUserRole = token ? jwtDecode(token).role : null;
+  const [currentUserRole, setCurrentUserRole] = useState(null);
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      const decoded = jwtDecode(token);
+      setCurrentUserRole(decoded.role);
+    } else {
+      setCurrentUserRole(null);
+    }
+  }, []);
 
   // Only display Edit and Delete if the user has the admin role
   return (

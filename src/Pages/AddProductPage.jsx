@@ -17,34 +17,6 @@ const EditProductPage = () => {
   const [errors, setErrors] = useState([]);
   const formRef = useRef(null);
 
-  // Fetch product details and pre-populate
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const token = sessionStorage.getItem("token");
-      if (!token) return;
-
-      try {
-        const res = await fetch(`http://localhost:5000/api/products?id=${id}`, {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-
-        const data = await res.json();
-
-        setImgUrl(data.imgUrl || "");
-        setTitle(data.title || "");
-        setDescription(data.description || "");
-        setPrice(data.price || "");
-        setOnSale(data.onSale || "false");
-      } catch (err) {
-        console.error("Failed to fetch product:", err);
-      }
-    };
-
-    fetchProduct();
-  }, [id]);
-
   let errorFloater = null;
 
   // Show a floater with the errors
@@ -81,7 +53,7 @@ const EditProductPage = () => {
     // Edit a product
     try {
       const res = await fetch(`http://localhost:5000/api/products?id=${id}`, {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + sessionStorage.getItem("token"),
@@ -110,8 +82,8 @@ const EditProductPage = () => {
       <Container>
         <div className={styles.middleAlignment}>
           <div className={styles.mainBox} ref={formRef}>
-            <h3>Edit Product</h3>
-            <h4>You can modify the details here</h4>
+            <h3>Add Product</h3>
+            <h4>You can enter the details here</h4>
             <form onSubmit={handleSubmit}>
               <label className="form-label">Image URL </label>
               <input
@@ -163,7 +135,7 @@ const EditProductPage = () => {
               </select>
 
               <button type="submit" className="btn btn-primary mt-3">
-                Edit Product
+                Add Product
               </button>
             </form>
             {errorFloater}
