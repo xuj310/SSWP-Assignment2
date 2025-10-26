@@ -14,6 +14,7 @@ const EditProductPage = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [onSale, setOnSale] = useState("");
+  const [inStock, setInstock] = useState("");
   const [errors, setErrors] = useState([]);
   const formRef = useRef(null);
 
@@ -35,6 +36,7 @@ const EditProductPage = () => {
         setTitle(data.title || "");
         setDescription(data.description || "");
         setPrice(data.price || "");
+        setInstock(data.inStock || "false");
         setOnSale(data.onSale || "false");
       } catch (err) {
         console.error("Failed to fetch product:", err);
@@ -81,6 +83,7 @@ const EditProductPage = () => {
 
     if (image) formData.append("image", image);
     if (title) formData.append("title", title);
+    if (inStock !== "") formData.append("inStock", inStock);
     if (description) formData.append("description", description);
     if (price) formData.append("price", price);
     if (onSale !== "") formData.append("onSale", onSale);
@@ -165,6 +168,17 @@ const EditProductPage = () => {
                 id="onSale"
                 value={onSale}
                 onChange={(e) => setOnSale(e.target.value)}
+              >
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+
+              <label className="form-label">In Stock</label>
+              <select
+                className="form-control"
+                id="instock"
+                value={inStock}
+                onChange={(e) => setInstock(e.target.value)}
               >
                 <option value="true">True</option>
                 <option value="false">False</option>

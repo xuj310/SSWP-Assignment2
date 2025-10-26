@@ -12,6 +12,7 @@ const AddProductsPage = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
+  const [inStock, setInstock] = useState("false");
   const [onSale, setOnSale] = useState("false");
   const [errors, setErrors] = useState([]);
   const formRef = useRef(null);
@@ -56,11 +57,12 @@ const AddProductsPage = () => {
 
     const formData = new FormData();
 
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("onSale", onSale);
+    formData.append("inStock", inStock);
     if (image) formData.append("image", image);
-    if (title) formData.append("title", title);
-    if (description) formData.append("description", description);
-    if (price) formData.append("price", price);
-    if (onSale !== "") formData.append("onSale", onSale);
 
     try {
       const res = await fetch(`http://localhost:5000/api/products`, {
@@ -135,6 +137,16 @@ const AddProductsPage = () => {
                 id="onSale"
                 value={onSale}
                 onChange={(e) => setOnSale(e.target.value)}
+              >
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+              <label className="form-label">In Stock</label>
+              <select
+                className="form-control"
+                id="instock"
+                value={inStock}
+                onChange={(e) => setInstock(e.target.value)}
               >
                 <option value="true">True</option>
                 <option value="false">False</option>
