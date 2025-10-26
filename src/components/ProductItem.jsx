@@ -23,7 +23,7 @@ const ProductItem = ({ item }) => {
   // Only display Edit and Delete if the user has the admin role
   return (
     <li className={styles.gridItem}>
-      <img src={item.imgUrl} className={styles.productImage} alt={item.title} />
+      <img src={item.downloadURL} className={styles.productImage} alt={item.title} />
       <div className={styles.infoRow}>
         <h2 className={styles.centeredHeading}>{item.title}</h2>
         <div className={styles.buttonRow}>

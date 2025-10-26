@@ -13,7 +13,8 @@ const EditProductPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [onSale, setOnSale] = useState("");
+  const [image, setImage] = useState("");
+  const [onSale, setOnSale] = useState("false");
   const [errors, setErrors] = useState([]);
   const formRef = useRef(null);
 
@@ -39,10 +40,15 @@ const EditProductPage = () => {
     );
   }
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let parsed;
+    setErrors([]);
 
     const token = sessionStorage.getItem("token");
     if (!token) {
@@ -50,22 +56,25 @@ const EditProductPage = () => {
       return;
     }
 
-    // Edit a product
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("onSale", onSale);
+
     try {
       const res = await fetch(`http://localhost:5000/api/products?id=${id}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + sessionStorage.getItem("token"),
+          Authorization: "Bearer " + token,
         },
-        body: JSON.stringify({ imgUrl, title, description, price, onSale }),
+        body: formData,
       });
 
-      const data = await res.text();
-      const parsed = JSON.parse(data);
+      const parsed = await res.json();
 
-      // If there's errors, pick them up. Otherwise display a toast and return to the products page.
-      if (parsed.errors != null) {
+      if (parsed.errors) {
         setErrors(parsed.errors);
       } else {
         toast(parsed.message);
@@ -73,7 +82,6 @@ const EditProductPage = () => {
       }
     } catch (err) {
       console.error("Error:", err);
-      toast(parsed.errors);
     }
   };
 
@@ -87,13 +95,12 @@ const EditProductPage = () => {
             <form onSubmit={handleSubmit}>
               <label className="form-label">Image URL </label>
               <input
-                type="text"
+                type="file"
                 className="form-control"
                 id="imgUrl"
-                placeholder="Enter an image url"
-                value={imgUrl}
-                onChange={(e) => setImgUrl(e.target.value)}
+                onChange={handleFileChange}
               />
+
               <label className="form-label">Title</label>
               <input
                 type="text"
