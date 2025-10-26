@@ -9,7 +9,7 @@ import * as styles from "../styles.css.ts";
 const EditProductPage = () => {
   // Get product Id from URL
   const { id } = useParams();
-  const [imgUrl, setImgUrl] = useState("");
+  const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -32,7 +32,6 @@ const EditProductPage = () => {
 
         const data = await res.json();
 
-        setImgUrl(data.imgUrl || "");
         setTitle(data.title || "");
         setDescription(data.description || "");
         setPrice(data.price || "");
@@ -78,19 +77,25 @@ const EditProductPage = () => {
       return;
     }
 
+    const formData = new FormData();
+
+    if (image) formData.append("image", image);
+    if (title) formData.append("title", title);
+    if (description) formData.append("description", description);
+    if (price) formData.append("price", price);
+    if (onSale !== "") formData.append("onSale", onSale);
+
     // Edit a product
     try {
       const res = await fetch(`http://localhost:5000/api/products?id=${id}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + sessionStorage.getItem("token"),
+          Authorization: "Bearer " + token,
         },
-        body: JSON.stringify({ imgUrl, title, description, price, onSale }),
+        body: formData,
       });
 
-      const data = await res.text();
-      const parsed = JSON.parse(data);
+      const parsed = await res.json();
 
       // If there's errors, pick them up. Otherwise display a toast and return to the products page.
       if (parsed.errors != null) {
@@ -105,6 +110,11 @@ const EditProductPage = () => {
     }
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
   return (
     <Fragment>
       <Container>
@@ -113,14 +123,12 @@ const EditProductPage = () => {
             <h3>Edit Product</h3>
             <h4>You can modify the details here</h4>
             <form onSubmit={handleSubmit}>
-              <label className="form-label">Image URL </label>
+              <label className="form-label">Upload Image </label>
               <input
-                type="text"
+                type="file"
                 className="form-control"
                 id="imgUrl"
-                placeholder="Enter an image url"
-                value={imgUrl}
-                onChange={(e) => setImgUrl(e.target.value)}
+                onChange={handleFileChange}
               />
               <label className="form-label">Title</label>
               <input

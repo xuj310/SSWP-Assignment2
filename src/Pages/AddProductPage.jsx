@@ -6,10 +6,8 @@ import Floater from "react-floater";
 import { useEffect } from "react";
 import * as styles from "../styles.css.ts";
 
-const EditProductPage = () => {
+const AddProductsPage = () => {
   // Get product Id from URL
-  const { id } = useParams();
-  const [imgUrl, setImgUrl] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -57,14 +55,15 @@ const EditProductPage = () => {
     }
 
     const formData = new FormData();
-    formData.append("image", image);
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("onSale", onSale);
+
+    if (image) formData.append("image", image);
+    if (title) formData.append("title", title);
+    if (description) formData.append("description", description);
+    if (price) formData.append("price", price);
+    if (onSale !== "") formData.append("onSale", onSale);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/products?id=${id}`, {
+      const res = await fetch(`http://localhost:5000/api/products`, {
         method: "POST",
         headers: {
           Authorization: "Bearer " + token,
@@ -93,7 +92,7 @@ const EditProductPage = () => {
             <h3>Add Product</h3>
             <h4>You can enter the details here</h4>
             <form onSubmit={handleSubmit}>
-              <label className="form-label">Image URL </label>
+              <label className="form-label">Upload Image</label>
               <input
                 type="file"
                 className="form-control"
@@ -153,4 +152,4 @@ const EditProductPage = () => {
   );
 };
 
-export default EditProductPage;
+export default AddProductsPage;
